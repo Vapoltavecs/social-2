@@ -1,0 +1,11 @@
+.comment{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.308);
+    padding: 10px 0px;
+    &__user{
+        margin-left: 20px;
+    }
+    
+}

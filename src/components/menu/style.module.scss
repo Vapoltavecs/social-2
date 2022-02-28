@@ -1,23 +1,27 @@
 .menu {
-  margin: 20px;
-  position: sticky;
-  top: 20px;
-  height: calc(100vh - 40px);
-  min-width: 300px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  align-items: center;
+  background-color: black;
+
+  display: flex;
   z-index: 1;
   box-sizing: border-box;
-  background-color: white;
-  box-shadow: 0 20px 13px rgba(0, 0, 0, 0.185);
-  border-radius: 8px;
-  overflow: hidden;
+
+  padding: 0px 20px;
+  justify-content: space-between;
   &__item {
     display: block;
-    color: black;
-
-    padding: 10px;
+    color: white;
+    height: 100%;
+    padding: 20px;
     text-decoration: none;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
 
-    border-bottom: 1px solid rgba(128, 128, 128, 0.24);
     transition: all 0.3s;
     &:hover {
       background-color: rgba(148, 148, 148, 0.24);
@@ -25,36 +29,11 @@
   }
 
   &__logo {
-    width: 90%;
     display: block;
-    margin: 0 auto;
   }
 
-  &__users {
-    width: 100%;
-    margin-top: 40px;
-
-    &_users {
-      overflow-y: scroll;
-      height: 60vh;
-
-      &::-webkit-scrollbar {
-        background-color: white;
-        width: 4px;
-        scrollbar-width: thin;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: #06b6d4;
-        width: 100px;
-        border-radius: 20px;
-      }
-    }
-
-    &_title {
-      margin-bottom: 10px;
-      margin-left: 10px;
-    }
+  &__nav {
+    display: flex;
   }
 }
 

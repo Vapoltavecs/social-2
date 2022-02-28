@@ -1,6 +1,7 @@
 import React, { FC, FormEvent, useState } from "react";
 import FormOrdinary from "../../components/ordinary/form";
 import Spinner from "../../components/simple/spinnerSubmit";
+import classes from "./style.module.scss";
 
 interface IForm {
   sendData: (data: IFormData) => Promise<void>;
@@ -35,7 +36,7 @@ const Form: FC<IForm> = ({ sendData, title }) => {
         await sendData(form);
         setForm({ email: "", password: "" });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       } finally {
         setLoading(false);
       }
@@ -45,12 +46,28 @@ const Form: FC<IForm> = ({ sendData, title }) => {
   return (
     <>
       {isLoading && <Spinner />}
-      <FormOrdinary
-        form={form}
-        onSubmit={onSubmit}
-        title={title}
-        onChange={onChange}
-      />
+      <FormOrdinary onSubmit={onSubmit}>
+        <div className={classes.form}>
+          <div className={classes.form__title}>{title}</div>
+          <input
+            type="text"
+            name="email"
+            className={classes.form__input}
+            value={form.email}
+            onChange={onChange}
+            placeholder="E-mail"
+          />
+          <input
+            type="text"
+            name="password"
+            className={classes.form__input}
+            value={form.password}
+            onChange={onChange}
+            placeholder="Password"
+          />
+          <button className={classes.form__button}>{title}</button>
+        </div>
+      </FormOrdinary>
     </>
   );
 };

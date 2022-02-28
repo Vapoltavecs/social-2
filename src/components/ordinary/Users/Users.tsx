@@ -12,7 +12,7 @@ const Users: FC<IUsers> = ({ users }) => {
     <>
       {users.map((el) => (
         <div className={classes.user}>
-          <User {...el} key={el.user_id} />
+          <User {...el} key={el.id} />
         </div>
       ))}
     </>

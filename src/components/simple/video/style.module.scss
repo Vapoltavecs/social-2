@@ -1,28 +1,38 @@
 .card {
-    cursor: pointer;
+  cursor: pointer;
+  letter-spacing: 0px;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 300px;
+
   &__image {
     width: 100%;
+
+    display: block;
+    transition: all 0.3s;
+    filter: blur(4px);
+    &:hover {
+      transform: scale(1.03);
+      filter: blur(0px);
+    }
   }
-  &__content{
-    padding: 10px;
+  &__content {
+    padding: 20px;
+    background-color: rgb(22, 22, 22);
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    margin-top: 40px;
   }
 
-  &__header{
+  &__header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
-
-  &__raiting{
-    &_item{
-      color: rgb(43, 43, 43);
-      padding: 5px;
-    }
-  }
 }
 
-
-.card__link{
+.card__link {
   color: black;
   text-decoration: none;
 }

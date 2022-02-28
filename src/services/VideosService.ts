@@ -4,7 +4,7 @@ import { $api } from "../api";
 
 class VideosService {
    async getVideos(): Promise<AxiosResponse<IVideo[]>> {
-    return $api.get<IVideo[]>("/api/posts");
+    return $api.get<IVideo[]>("api/videos/popular/");
   }
 }
 

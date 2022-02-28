@@ -28,7 +28,7 @@ const Tape = ({ getVideos }: IProps) => {
   }, [getVideos]);
 
 
-  return isLoading ? <Spinner /> : <Videos videos={videos!} />;
+  return isLoading ? <Spinner /> : <Videos videos={videos} />;
 };
 
 export { Tape };

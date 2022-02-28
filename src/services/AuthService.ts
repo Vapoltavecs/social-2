@@ -4,13 +4,13 @@ import { $api } from "../api";
 
 class AuthServise {
   async login(email: string, password: string): Promise<AxiosResponse<IToken>> {
-    return $api.post<IToken>("/api/auth/authorization", { email, password });
+    return $api.post<IToken>("/api/user/token-create/", { email, password });
   }
   async reigstration(
     email: string,
     password: string
   ): Promise<AxiosResponse<IToken>> {
-    return $api.post<IToken>("/api/auth/registration", { email, password });
+    return $api.post<IToken>("/api/auth/users/", { username: email, password, email });
   }
 }
 

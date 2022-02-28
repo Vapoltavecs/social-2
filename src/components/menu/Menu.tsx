@@ -2,60 +2,80 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./style.module.scss";
 import logo from "../../assets/images/logo.svg";
-import FollowsServise from "../../services/FollowsServise";
-import Users from "../../containers/Users";
 
 const Menu = () => {
-  const getUsers = async () => FollowsServise.getFollows();
+  const logOut = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
   return (
     <div className={classes.menu}>
-      <img src={logo} alt="logo" className={classes.menu__logo} />
-      <NavLink
-        to={"/"}
-        className={({ isActive }) =>
-          isActive
-            ? `${classes.active} ${classes.menu__item}`
-            : classes.menu__item
-        }
-      >
-        Главная
+      <NavLink to={"/"}>
+        <img src={logo} alt="logo" className={classes.menu__logo} />
       </NavLink>
-      <NavLink
-        to={"/follows"}
-        className={({ isActive }) =>
-          isActive
-            ? `${classes.active} ${classes.menu__item}`
-            : classes.menu__item
-        }
-      >
-        Подписки
-      </NavLink>
-      <NavLink
-        to={"/auth/registration"}
-        className={({ isActive }) =>
-          isActive
-            ? `${classes.active} ${classes.menu__item}`
-            : classes.menu__item
-        }
-      >
-        Зарегестрироваться
-      </NavLink>
-      <NavLink
-        to={"/auth/authorization"}
-        className={({ isActive }) =>
-          isActive
-            ? `${classes.active} ${classes.menu__item}`
-            : classes.menu__item
-        }
-      >
-        Авторизоваться
-      </NavLink>
-      <div className={classes.menu__users}>
-        <div className={classes.menu__users_title}>Ваши подписки:</div>
-        <div className={classes.menu__users_users}>
-          <Users getUsers={getUsers} />
-        </div>
-      </div>
+      <nav className={classes.menu__nav}>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            isActive
+              ? `${classes.active} ${classes.menu__item}`
+              : classes.menu__item
+          }
+        >
+          Главная
+        </NavLink>
+
+        {localStorage.getItem("token") ? (
+          <>
+            <NavLink
+              to={"/follows"}
+              className={({ isActive }) =>
+                isActive
+                  ? `${classes.active} ${classes.menu__item}`
+                  : classes.menu__item
+              }
+            >
+              Подписчики
+            </NavLink>
+            <NavLink
+              to={"/post/create"}
+              className={({ isActive }) =>
+                isActive
+                  ? `${classes.active} ${classes.menu__item}`
+                  : classes.menu__item
+              }
+            >
+              Создать пост
+            </NavLink>
+            <NavLink to={"/"} className={classes.menu__item} onClick={logOut}>
+              Выйти
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <NavLink
+              to={"/auth/registration"}
+              className={({ isActive }) =>
+                isActive
+                  ? `${classes.active} ${classes.menu__item}`
+                  : classes.menu__item
+              }
+            >
+              Зарегестрироваться
+            </NavLink>
+            <NavLink
+              to={"/auth/authorization"}
+              className={({ isActive }) =>
+                isActive
+                  ? `${classes.active} ${classes.menu__item}`
+                  : classes.menu__item
+              }
+            >
+              Авторизоваться
+            </NavLink>
+          </>
+        )}
+      </nav>
     </div>
   );
 };
